@@ -1,18 +1,9 @@
 import styled from "styled-components";
-
-import { useQuery } from "@tanstack/react-query";
-import { getCars } from "../../services/apiCars";
+import Table from "../../ui/Table";
 import Spinner from "../../ui/Spinner";
 import CarSlotRow from "./CarSlotRow";
-
-const Table = styled.div`
-  border: 1px solid var(--color-grey-200);
-
-  font-size: 1.4rem;
-  background-color: var(--color-grey-0);
-  border-radius: 7px;
-  overflow: hidden;
-`;
+import { useCarSlots } from "./useCarSlots";
+import Menus from "../../ui/Menus";
 
 const TableHeader = styled.header`
   display: grid;
@@ -30,31 +21,29 @@ const TableHeader = styled.header`
 `;
 
 const CarSlotTable = () => {
-  const {
-    isLoading,
-    data: cars,
-    error,
-  } = useQuery({
-    queryKey: ["cars"],
-    queryFn: getCars,
-  });
+  const { isLoading, cars } = useCarSlots();
 
-  if (error) return null;
   if (isLoading) return <Spinner />;
   return (
-    <Table role="table">
-      <TableHeader role="row">
-        <div></div>
-        <div>Car</div>
-        <div>Capacity</div>
-        <div>Price</div>
-        <div>Discount</div>
-        <div></div>
-      </TableHeader>
-      {cars.map((car) => (
-        <CarSlotRow car={car} key={car.id} />
-      ))}
-    </Table>
+    <Menus>
+      <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+        <Table.Header role="row">
+          <div></div>
+          <div>Car</div>
+          <div>Capacity</div>
+          <div>Price</div>
+          <div>Discount</div>
+          <div></div>
+        </Table.Header>
+
+        <Table.Body
+          // data={cabins}
+          // data={filteredCabins}
+          data={cars}
+          render={(car) => <CarSlotRow car={car} key={car.id} />}
+        />
+      </Table>
+    </Menus>
   );
 };
 export default CarSlotTable;

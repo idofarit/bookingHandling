@@ -1,9 +1,15 @@
 import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers";
-import Button from "../../ui/Button";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useState } from "react";
+import CreateCarSlotForm from "./CreateCarSlotForm";
+import { useDeleteCarSlot } from "./useDeleteCarSlot";
+import { FaRegCopy, FaPencil, FaRegTrashCan } from "react-icons/fa6";
+import { useCreateCarSlot } from "./useCreateCarSlot";
+import Modal from "../../ui/Modal";
+import Menus from "../../ui/Menus";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import Table from "../../ui/Table";
 import { deleteCar } from "../../services/apiCars";
-import toast from "react-hot-toast";
 
 const Img = styled.img`
   display: block;
@@ -32,47 +38,76 @@ const Discount = styled.div`
   color: var(--color-green-700);
 `;
 
-const TableRow = styled.div`
-  display: grid;
-  grid-template-columns: 0.6fr 1.8fr 2.2fr 1fr 1fr 1fr;
-  column-gap: 2.4rem;
-  align-items: center;
-  padding: 1.4rem 2.4rem;
-
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
-  }
-`;
-
 const CarSlotRow = ({ car }) => {
-  const { id: carId, name, maxCapacity, regularPrice, discount, image } = car;
+  const { isCreating, createCarSlot } = useCreateCarSlot();
 
-  const queryClient = useQueryClient();
+  const { isDeleting, deleteCarSlot } = useDeleteCarSlot();
 
-  const { isLoading: isDeleting, mutate } = useMutation({
-    mutationFn: deleteCar,
-    onSuccess: () => {
-      toast.success("Car slot successfully deleted");
-      queryClient.invalidateQueries({
-        queryKey: ["cars"],
-      });
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    },
-  });
+  const {
+    id: carId,
+    name,
+    maxCapacity,
+    regularPrice,
+    discount,
+    image,
+    description,
+  } = car;
+
+  const handleDuplicate = () => {
+    createCarSlot({
+      name: `Copy of ${name}`,
+      maxCapacity,
+      regularPrice,
+      discount,
+      image,
+      description,
+    });
+  };
 
   return (
-    <TableRow role="row">
+    <Table.Row>
       <Img src={image} />
       <Car>{name}</Car>
       <div>Can tarvell upto {maxCapacity}</div>
       <Price>{formatCurrency(regularPrice)}</Price>
-      <Discount>{formatCurrency(discount)}</Discount>
-      <Button onClick={() => mutate(carId)} disabled={isDeleting}>
-        Delete
-      </Button>
-    </TableRow>
+      {discount ? (
+        <Discount>{formatCurrency(discount)}</Discount>
+      ) : (
+        <span>&mdash;</span>
+      )}
+      <div>
+        <Modal>
+          <Menus.Menu>
+            <Menus.Toggle id={carId} />
+
+            <Menus.List id={carId}>
+              <Menus.Button icon={<FaRegCopy />} onClick={handleDuplicate}>
+                Duplicate
+              </Menus.Button>
+              <Modal.Open opens="edit">
+                <Menus.Button icon={<FaPencil />}>Edit</Menus.Button>
+              </Modal.Open>
+
+              <Modal.Open opens="delete">
+                <Menus.Button icon={<FaRegTrashCan />}>Delete</Menus.Button>
+              </Modal.Open>
+            </Menus.List>
+
+            <Modal.Window name="edit">
+              <CreateCarSlotForm carSlotEdit={car} />
+            </Modal.Window>
+
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName="cars"
+                disabled={isDeleting}
+                onConfirm={() => deleteCarSlot(carId)}
+              />
+            </Modal.Window>
+          </Menus.Menu>
+        </Modal>
+      </div>
+    </Table.Row>
   );
 };
 
