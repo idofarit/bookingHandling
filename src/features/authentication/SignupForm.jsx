@@ -5,21 +5,19 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import { useSignup } from "./useSignup";
 
-// Email regex: /\S+@\S+\.\S+/
-
 const SignupForm = () => {
   const { signup, isLoading } = useSignup();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
-  function onSubmit({ fullName, email, password }) {
+  const onSubmit = ({ fullName, email, password }) => {
     signup(
       { fullName, email, password },
       {
         onSettled: () => reset(),
       }
     );
-  }
+  };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -40,7 +38,8 @@ const SignupForm = () => {
           {...register("email", {
             required: "This field is required",
             pattern: {
-              value: /\S+@\S+\.\S+/,
+              value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+
               message: "Please provide a valid email address",
             },
           })}
@@ -48,7 +47,7 @@ const SignupForm = () => {
       </FormRow>
 
       <FormRow
-        label="Password (min 8 characters)"
+        label="Password (min 6 characters)"
         error={errors?.password?.message}
       >
         <Input
@@ -58,8 +57,8 @@ const SignupForm = () => {
           {...register("password", {
             required: "This field is required",
             minLength: {
-              value: 8,
-              message: "Password needs a minimum of 8 characters",
+              value: 6,
+              message: "Password needs a minimum of 6 characters",
             },
           })}
         />

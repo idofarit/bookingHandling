@@ -1,5 +1,13 @@
-const Users = () => {
-  return <div>Users</div>;
+import SignupForm from "../features/authentication/SignupForm";
+import Heading from "../ui/Heading";
+
+const NewUsers = () => {
+  return (
+    <>
+      <Heading as="h1">Create a new user</Heading>
+      <SignupForm />
+    </>
+  );
 };
 
-export default Users;
+export default NewUsers;
