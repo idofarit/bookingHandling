@@ -65,11 +65,10 @@ export const getBookingsAfterDate = async (date) => {
   return data;
 };
 
-// Returns all STAYS that are were created after the given date
-export const getStaysAfterDate = async (date) => {
+export const getRentsAfterDate = async (date) => {
   const { data, error } = await supabase
     .from("bookings")
-    // .select('*')
+
     .select("*, customers(fullName)")
     .gte("startDate", date)
     .lte("startDate", getToday());
@@ -82,8 +81,7 @@ export const getStaysAfterDate = async (date) => {
   return data;
 };
 
-// Activity means that there is a check in or a check out today
-export const getStaysTodayActivity = async () => {
+export const getRentsTodayActivity = async () => {
   const { data, error } = await supabase
     .from("bookings")
     .select("*, customers(fullName, nationality, countryFlag)")
