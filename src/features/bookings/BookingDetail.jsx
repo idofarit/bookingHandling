@@ -12,7 +12,7 @@ import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "./useBooking";
 import Spinner from "../../ui/Spinner";
 import { useNavigate } from "react-router-dom";
-import { HiArrowUpOnSquare } from "react-icons/hi2";
+import { FaRegArrowAltCircleUp } from "react-icons/fa";
 import { useReturn } from "../rent-in-out/useReturn";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
@@ -25,7 +25,7 @@ const HeadingGroup = styled.div`
   align-items: center;
 `;
 
-function BookingDetail() {
+const BookingDetail = () => {
   const { booking, isLoading } = useBooking();
   const { returned, isReturned } = useReturn();
   const { deleteBooking, isDeleting } = useDeleteBooking();
@@ -65,7 +65,7 @@ function BookingDetail() {
 
         {status === "rented" && (
           <Button
-            icon={<HiArrowUpOnSquare />}
+            icon={<FaRegArrowAltCircleUp />}
             onClick={() => returned(bookingId)}
             disabled={isReturned}
           >
@@ -97,6 +97,6 @@ function BookingDetail() {
       </ButtonGroup>
     </>
   );
-}
+};
 
 export default BookingDetail;

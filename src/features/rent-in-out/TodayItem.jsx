@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import Tag from "../../ui/Tag";
-import { Flag } from "../../ui/Flag";
+
 import Button from "../../ui/Button";
 import CompleteReturnButton from "./CompleteReturnButton";
 
 const StyledTodayItem = styled.li`
   display: grid;
-  grid-template-columns: 9rem 2rem 1fr 7rem 9rem;
+  grid-template-columns: 9rem 12rem 13rem;
   gap: 1.2rem;
   align-items: center;
 
@@ -26,16 +26,14 @@ const Guest = styled.div`
 `;
 
 const TodayItem = ({ activity }) => {
-  const { id, status, customers, numberDays } = activity;
+  const { id, status, customers } = activity;
 
   return (
     <StyledTodayItem>
-      {status === "unconfirmed" && <Tag type="green">Arriving</Tag>}
-      {status === "rented" && <Tag type="blue">Departing</Tag>}
+      {status === "unconfirmed" && <Tag type="green">Rent</Tag>}
+      {status === "rented" && <Tag type="blue">Return</Tag>}
 
-      <Flag src={customers.countryFlag} alt={`Flag of ${customers.country}`} />
       <Guest>{customers.fullName}</Guest>
-      <div>{numberDays} days rent</div>
 
       {status === "unconfirmed" && (
         <Button

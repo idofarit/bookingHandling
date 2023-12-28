@@ -1,3 +1,4 @@
+import AddNewBooking from "../bookingnew/AddNewBooking";
 import BookingTable from "../features/bookings/BookingTable";
 import BookingTableOperations from "../features/bookings/BookingTableOperations";
 import Heading from "../ui/Heading";
@@ -10,6 +11,8 @@ const Bookings = () => {
         <Heading as="h1">All bookings</Heading>
         <BookingTableOperations />
       </Row>
+
+      <AddNewBooking />
       <BookingTable />
     </>
   );

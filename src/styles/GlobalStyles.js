@@ -37,7 +37,9 @@ const GlobalStyles = createGlobalStyle`
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
-  
+  --shadow-box: 0px 0px 1px rgba(0, 0, 0, 0.25), 1px 1px 7px rgba(0, 0, 0, 0.25),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.5),
+    inset 0px 0px 1px rgba(0, 0, 0, 0.5);
   
 
     --image-grayscale: 0;

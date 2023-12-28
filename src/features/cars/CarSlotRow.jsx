@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { formatCurrency } from "../../utils/helpers";
-import { useState } from "react";
+
 import CreateCarSlotForm from "./CreateCarSlotForm";
 import { useDeleteCarSlot } from "./useDeleteCarSlot";
 import { FaRegCopy, FaPencil, FaRegTrashCan } from "react-icons/fa6";
@@ -9,7 +9,6 @@ import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
-import { deleteCar } from "../../services/apiCars";
 
 const Img = styled.img`
   display: block;

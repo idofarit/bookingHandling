@@ -6,6 +6,7 @@ import {
   HiEye,
   HiTrash,
 } from "react-icons/hi2";
+
 import { useNavigate } from "react-router-dom";
 
 import Tag from "../../ui/Tag";
@@ -46,20 +47,17 @@ const Amount = styled.div`
   font-weight: 500;
 `;
 
-function BookingRow({
-  booking: {
+const BookingRow = ({ booking }) => {
+  const {
     id: bookingId,
-    created_at,
     startDate,
     endDate,
     numberDays,
-    numberCustomers,
     totalPrice,
     status,
     customers: { fullName: customerName, email },
     cars: { name: carName },
-  },
-}) {
+  } = booking;
   const navigate = useNavigate();
   const { returned, isReturned } = useReturn();
   const { deleteBooking, isDeleting } = useDeleteBooking();
@@ -142,6 +140,6 @@ function BookingRow({
       </Modal>
     </Table.Row>
   );
-}
+};
 
 export default BookingRow;

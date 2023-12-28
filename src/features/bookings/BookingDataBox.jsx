@@ -3,12 +3,11 @@ import { format, isToday } from "date-fns";
 import {
   HiOutlineChatBubbleBottomCenterText,
   HiOutlineCheckCircle,
-  HiOutlineCurrencyDollar,
   HiOutlineHomeModern,
 } from "react-icons/hi2";
+import { BsCurrencyRupee } from "react-icons/bs";
 
 import DataItem from "../../ui/DataItem";
-import { Flag } from "../../ui/Flag";
 
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
 
@@ -115,13 +114,7 @@ function BookingDataBox({ booking }) {
     hasInsurance,
     observations,
     isPaid,
-    customers: {
-      fullName: customerName,
-      email,
-      country,
-      countryFlag,
-      nationalID,
-    },
+    customers: { fullName: customerName, email, nationalID },
     cars: { name: carName },
   } = booking;
 
@@ -146,7 +139,6 @@ function BookingDataBox({ booking }) {
 
       <Section>
         <Guest>
-          {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
           <p>
             {customerName}{" "}
             {numberCustomers > 1 ? `+ ${numberCustomers - 1} customers` : ""}
@@ -171,7 +163,7 @@ function BookingDataBox({ booking }) {
         </DataItem>
 
         <Price isPaid={isPaid}>
-          <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
+          <DataItem icon={<BsCurrencyRupee />} label={`Total price`}>
             {formatCurrency(totalPrice)}
 
             {hasInsurance &&

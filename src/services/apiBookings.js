@@ -84,7 +84,7 @@ export const getRentsAfterDate = async (date) => {
 export const getRentsTodayActivity = async () => {
   const { data, error } = await supabase
     .from("bookings")
-    .select("*, customers(fullName, nationality, countryFlag)")
+    .select("*, customers(fullName, nationality)")
     .or(
       `and(status.eq.unconfirmed,startDate.eq.${getToday()}),and(status.eq.rented,endDate.eq.${getToday()})`
     )
@@ -119,5 +119,37 @@ export const deleteBooking = async (id) => {
     console.error(error);
     throw new Error("Booking could not be deleted");
   }
+  return data;
+};
+
+export const addNewBooking = async (newBooking, id) => {
+  let query = supabase.from("bookings");
+
+  if (!id) query = query.insert([{ ...newBooking }]);
+
+  if (id) query = query.update({ ...newBooking }).eq("id", id);
+
+  const { data, error } = await query.select().single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("New Booking could not be created");
+  }
+
+  return data;
+};
+
+export const addNewCsutomerDetails = async (newCustomer, id) => {
+  let query = supabase.from("customers");
+
+  if (!id) query = query.insert([{ ...newCustomer }]);
+
+  const { data, error } = await query.select().single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("New Customer Details could not be created");
+  }
+
   return data;
 };
