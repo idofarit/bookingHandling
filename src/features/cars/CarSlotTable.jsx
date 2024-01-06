@@ -52,7 +52,6 @@ const CarSlotTable = () => {
 
         <Table.Body
           data={sortedCabins}
-          // data={cars}
           render={(car) => <CarSlotRow car={car} key={car.id} />}
         />
       </Table>

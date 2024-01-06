@@ -11,21 +11,52 @@ import {
 import { useDarkMode } from "../../context/DarkModeContext";
 
 const ChartBox = styled.div`
-  /* Box */
-  background-color: var(--color-grey-0);
-  padding: 40px 30px 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 20px;
   box-shadow: var(--shadow-box);
-
-  grid-column: 2 / span 2;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  & > *:first-child {
-    margin-bottom: 1.6rem;
+  background-color: var(--color-grey-0);
+  padding-bottom: 8rem;
+  padding-top: 2rem;
+  @media (max-width: 1050px) {
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
-  & .recharts-pie-label-text {
-    font-weight: 600;
+
+  .chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 14px;
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+
+      .title {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+        }
+      }
+    }
   }
 `;
 
@@ -123,7 +154,7 @@ const prepareData = (startData, rents) => {
   };
 
   const data = rents
-    .reduce((arr, cur) => {
+    ?.reduce((arr, cur) => {
       const num = cur.numberDays;
       if (num === 1) return incArrayValue(arr, "1 night");
       if (num === 2) return incArrayValue(arr, "2 days");
@@ -148,40 +179,49 @@ const DurationChart = ({ confirmedRents }) => {
   return (
     <>
       <ChartBox>
-        <Heading as="h2" style={{ position: "relative", bottom: "2rem" }}>
-          Rent duration summary
-        </Heading>
-        <ResponsiveContainer width="100%" height={240}>
-          <PieChart>
-            <Pie
-              data={data}
-              nameKey="duration"
-              dataKey="value"
-              innerRadius={85}
-              outerRadius={110}
-              cx="40%"
-              cy="46%"
-              paddingAngle={3}
+        <div className="chart">
+          <ResponsiveContainer width="99%" height={300}>
+            <Heading
+              as="h3"
+              style={{
+                position: "relative",
+                bottom: "2rem",
+                // paddingTop: "1.5rem",
+                marginTop: "2rem",
+              }}
             >
-              {data.map((entry) => (
-                <Cell
-                  fill={entry.color}
-                  stroke={entry.color}
-                  key={entry.duration}
-                />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend
-              verticalAlign="middle"
-              align="right"
-              width="30%"
-              layout="vertical"
-              iconSize={8}
-              iconType="circle"
+              Rent duration summary
+            </Heading>
+            <Tooltip
+              contentStyle={{ background: "white", borderRadius: "5px" }}
             />
-          </PieChart>
-        </ResponsiveContainer>
+            <PieChart>
+              <Pie
+                data={data}
+                nameKey="duration"
+                innerRadius={"70%"}
+                outerRadius={"90%"}
+                paddingAngle={5}
+                dataKey="value"
+              >
+                {data?.map((entry) => (
+                  <Cell
+                    fill={entry.color}
+                    stroke={entry.color}
+                    key={entry.duration}
+                  />
+                ))}
+              </Pie>
+              <Legend
+                verticalAlign="bottom"
+                align="center"
+                layout="vertical"
+                iconSize={15}
+                iconType="circle"
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
       </ChartBox>
     </>
   );

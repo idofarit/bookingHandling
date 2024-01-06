@@ -18,8 +18,8 @@ const RecentBookings = () => {
   useEffect(() => {
     const fetchLastBookings = async () => {
       const { data, error } = await supabase
-        .from("bookings") //table name
-        .select("*,customers(fullName)") //columns to select from the database
+        .from("bookings")
+        .select("*,customers(fullName)")
 
         .order("created_at", { ascending: false })
         .limit(5);

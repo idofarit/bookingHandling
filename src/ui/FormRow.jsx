@@ -5,8 +5,13 @@ const StyledFormRow = styled.div`
   align-items: center;
   grid-template-columns: 24rem 1fr 1.2fr;
   gap: 2.4rem;
-
   padding: 1.2rem 0;
+  @media (max-width: 850px) {
+    grid-template-columns: 10rem auto 1fr;
+  }
+  @media (max-width: 410px) {
+    grid-template-columns: 5rem auto 1fr;
+  }
 
   &:first-child {
     padding-top: 0;

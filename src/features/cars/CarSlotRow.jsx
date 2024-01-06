@@ -24,6 +24,9 @@ const Car = styled.div`
   font-weight: 600;
   color: var(--color-grey-600);
   font-family: "Sono";
+  @media (max-width: 850px) {
+    font-size: 1rem;
+  }
 `;
 
 const Price = styled.div`

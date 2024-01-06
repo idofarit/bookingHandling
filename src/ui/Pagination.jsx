@@ -11,6 +11,9 @@ const StyledPagination = styled.div`
 const P = styled.p`
   font-size: 1.4rem;
   margin-left: 0.8rem;
+  @media (max-width: 850px) {
+    font-size: 1rem;
+  }
 
   & span {
     font-weight: 600;
@@ -30,13 +33,15 @@ const PaginationButton = styled.button`
   border-radius: var(--border-radius-sm);
   font-weight: 500;
   font-size: 1.4rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
   padding: 0.6rem 1.2rem;
   transition: all 0.3s;
+  @media (max-width: 850px) {
+    font-size: 1rem;
+  }
 
   &:has(span:last-child) {
     padding-left: 0.4rem;

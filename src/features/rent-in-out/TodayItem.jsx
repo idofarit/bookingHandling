@@ -19,6 +19,11 @@ const StyledTodayItem = styled.li`
   &:first-child {
     border-top: 1px solid var(--color-grey-100);
   }
+  @media (max-width: 850px) {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
 `;
 
 const Guest = styled.div`

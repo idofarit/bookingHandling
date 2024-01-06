@@ -1,6 +1,7 @@
-import { format } from "date-fns";
 import React from "react";
 import styled from "styled-components";
+import Table from "./Table";
+import RecentBookingRow from "./RecentBookingRow";
 
 const Container = styled.div`
   width: 100%;
@@ -10,65 +11,37 @@ const Container = styled.div`
   margin-top: 5rem;
   background-color: var(--color-grey-100);
   padding: 1rem;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-`;
-
-const TableHeader = styled.th`
-  background-color: var(--color-grey-300);
-  padding: 10px;
-  text-align: left;
-  /* border-bottom: 1px solid #ddd; */
+  @media (max-width: 550px) {
+    width: 100%;
+    font-size: 1rem;
+    overflow: scroll;
+  }
 `;
 
 const TableData = styled.td`
   padding: 10px;
   line-height: 3.5rem;
   color: var(--color-grey-500);
-  /* border-bottom: 1px solid #b2adcb; */
 `;
 
 const RecentBookingTable = ({ headers, data }) => {
   return (
     <Container>
-      <Table>
-        <thead>
-          <tr>
-            {headers?.map((header, index) => (
-              <TableHeader key={index}>{header}</TableHeader>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data?.map((booking, index) => {
-            const {
-              carId,
-              customerId,
-              startDate,
-              endDate,
-              isPaid,
-              customers: { fullName },
-            } = booking;
-            return (
-              <tr key={index}>
-                <TableData>{fullName}</TableData>
-                <TableData>{customerId}</TableData>
-                <TableData>
-                  {" "}
-                  {format(new Date(startDate), "MMM dd yyyy")}
-                </TableData>
-                <TableData>
-                  {" "}
-                  {format(new Date(endDate), "MMM dd yyyy")}
-                </TableData>
-                <TableData>{isPaid.toString()}</TableData>
-              </tr>
-            );
-          })}
-        </tbody>
+      <Table columns="1.5fr 1.5fr 1.5fr 1.5fr 0.5fr">
+        <Table.Header>
+          <div>Customer Name</div>
+          <div>CustomerID</div>
+          <div>Booking Date</div>
+          <div>Return Date</div>
+          <div>Paid</div>
+        </Table.Header>
+
+        <Table.Body
+          data={data}
+          render={(booking) => (
+            <RecentBookingRow key={booking.id} booking={booking} />
+          )}
+        />
       </Table>
     </Container>
   );

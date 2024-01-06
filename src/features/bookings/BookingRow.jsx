@@ -25,6 +25,9 @@ const Car = styled.div`
   font-weight: 600;
   color: var(--color-grey-600);
   font-family: "Sono";
+  @media (max-width: 850px) {
+    font-size: 1rem;
+  }
 `;
 
 const Stacked = styled.div`
@@ -74,17 +77,17 @@ const BookingRow = ({ booking }) => {
 
       <Stacked>
         <span>{customerName}</span>
-        <span>{email}</span>
+        <span style={{ fontSize: "0.8rem" }}>{email}</span>
       </Stacked>
 
       <Stacked>
-        <span>
+        <span style={{ fontSize: "0.9rem" }}>
           {isToday(new Date(startDate))
             ? "Today"
             : formatDistanceFromNow(startDate)}{" "}
           &rarr; {numberDays} day rent
         </span>
-        <span>
+        <span style={{ fontSize: "0.9rem" }}>
           {format(new Date(startDate), "MMM dd yyyy")} &mdash;{" "}
           {format(new Date(endDate), "MMM dd yyyy")}
         </span>

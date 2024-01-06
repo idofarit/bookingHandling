@@ -19,20 +19,4 @@ const Addcar = () => {
   );
 };
 
-// const Addcar = () => {
-//   const [isOpenModal, setIsOpenModal] = useState(false);
-//   return (
-//     <div>
-//       <Button onClick={() => setIsOpenModal(!isOpenModal)}>
-//         Add New CarSlot
-//       </Button>
-//       {isOpenModal && (
-//         <Modal onClose={() => setIsOpenModal(false)}>
-//           <CreateCarSlotForm onCloseModal={() => setIsOpenModal(false)} />
-//         </Modal>
-//       )}
-//     </div>
-//   );
-// };
-
 export default Addcar;

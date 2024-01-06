@@ -10,6 +10,11 @@ const Tag = styled.span`
 
   color: var(--color-${(props) => props.type}-700);
   background-color: var(--color-${(props) => props.type}-100);
+
+  @media (max-width: 850px) {
+    font-size: 0.5rem;
+    font-weight: 300;
+  }
 `;
 
 export default Tag;

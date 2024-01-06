@@ -9,9 +9,33 @@ const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  @media (max-width: 1050px) {
+    width: 10rem;
+  }
+  @media (max-width: 1050px) {
+    width: 9rem;
+  }
+  @media (max-width: 750px) {
+    width: 9rem;
+    transform: translateX(-1rem);
+  }
+  @media (max-width: 600px) {
+    width: 6.5rem;
+    transform: translateX(-1.2rem);
+  }
+  @media (max-width: 500px) {
+    width: 6rem;
+    transform: translateX(-1.5rem);
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
+  span {
+    display: block;
+    @media (max-width: 1050px) {
+      display: none;
+    }
+  }
   &:link,
   &:visited {
     display: flex;
@@ -31,7 +55,6 @@ const StyledNavLink = styled(NavLink)`
   &.active:visited {
     color: var(--color-grey-800);
     background-color: var(--color-grey-50);
-    border-radius: var(--border-radius-sm);
   }
 
   & svg {

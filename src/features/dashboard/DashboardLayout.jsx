@@ -12,9 +12,9 @@ const StyledDashboardLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  grid-template-rows: auto 34rem auto;
-  grid-auto-rows: 32px;
-  gap: 2.4rem;
+  grid-template-rows: auto 34rem;
+
+  gap: 1.4rem;
 `;
 
 const DashboardLayout = () => {
@@ -30,6 +30,7 @@ const DashboardLayout = () => {
   return (
     <StyledDashboardLayout>
       <Stats bookings={bookings} confirmedRents={confirmedRents} />
+
       <TodayActivity />
       <DurationChart confirmedRents={confirmedRents} />
       <SalesChart bookings={bookings} numDays={numDays} />

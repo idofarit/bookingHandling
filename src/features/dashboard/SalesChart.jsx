@@ -20,6 +20,18 @@ const StyledSalesChart = styled(DashboardBox)`
   & .recharts-cartesian-grid-vertical line {
     stroke: var(--color-grey-300);
   }
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay);
+  border-radius: 10px;
+  transition: all 0.6s linear;
 `;
 
 const SalesChart = ({ bookings, numDays }) => {
@@ -34,10 +46,10 @@ const SalesChart = ({ bookings, numDays }) => {
     return {
       label: format(date, "MMM dd"),
       totalSales: bookings
-        .filter((booking) => isSameDay(date, new Date(booking.created_at)))
+        ?.filter((booking) => isSameDay(date, new Date(booking.created_at)))
         .reduce((acc, cur) => acc + cur.totalPrice, 0),
       extrasSales: bookings
-        .filter((booking) => isSameDay(date, new Date(booking.created_at)))
+        ?.filter((booking) => isSameDay(date, new Date(booking.created_at)))
         .reduce((acc, cur) => acc + cur.extraPrice, 0),
     };
   });

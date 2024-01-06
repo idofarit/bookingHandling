@@ -20,6 +20,8 @@ const StyledToday = styled.div`
   gap: 2.4rem;
   grid-column: 1 / span 1;
   padding-top: 2.4rem;
+  width: auto;
+  height: 100%;
 `;
 
 const TodayList = styled.ul`

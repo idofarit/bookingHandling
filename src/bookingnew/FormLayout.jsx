@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CreateNewBookinForm from "./CreateNewBookinForm";
 import CreateNewCustomerForm from "./CreateNewCustomerForm";
 import styled from "styled-components";
+import Heading from "../ui/Heading";
 
 const ProgressBar = styled.div`
   width: 100%;
@@ -60,7 +61,7 @@ function FormLayout() {
         </p>
       </ProgressBar>
       <div>
-        <h1>{FormTitles[page]}</h1>
+        <Heading as="h1">{FormTitles[page]}</Heading>
       </div>
       <div>{PageDisplay()}</div>
       {page !== 0 && (

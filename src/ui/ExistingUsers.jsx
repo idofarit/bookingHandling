@@ -10,6 +10,11 @@ const TableContainer = styled.div`
   border-collapse: collapse;
   box-shadow: var(--shadow-md);
   padding: 10px;
+  @media (max-width: 550px) {
+    width: auto;
+    font-size: 1rem;
+    padding: 0.2rem;
+  }
 `;
 
 const TableHeader = styled.th`
