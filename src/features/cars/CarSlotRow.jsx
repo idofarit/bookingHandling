@@ -83,7 +83,11 @@ const CarSlotRow = ({ car }) => {
             <Menus.Toggle id={carId} />
 
             <Menus.List id={carId}>
-              <Menus.Button icon={<FaRegCopy />} onClick={handleDuplicate}>
+              <Menus.Button
+                icon={<FaRegCopy />}
+                onClick={handleDuplicate}
+                disabled={isCreating}
+              >
                 Duplicate
               </Menus.Button>
               <Modal.Open opens="edit">
