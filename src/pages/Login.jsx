@@ -10,6 +10,7 @@ const LoginLayout = styled.main`
   justify-content: center;
   gap: 3.2rem;
   background-color: var(--color-grey-50);
+  transform: translateY(-10rem);
 `;
 
 const Login = () => {

@@ -10,8 +10,12 @@ const StyledSidebar = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+
   @media (max-width: 1050px) {
-    width: 8%;
+    width: 10%;
+  }
+  @media (max-width: 550px) {
+    width: 11%;
   }
 `;
 

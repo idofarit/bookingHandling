@@ -7,7 +7,8 @@ const Input = styled.input`
   padding: 0.8rem 1.2rem;
   box-shadow: var(--shadow-sm);
   @media (max-width: 480px) {
-    width: 10rem;
+    margin: auto;
+    width: 16rem;
   }
 `;
 

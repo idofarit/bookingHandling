@@ -35,6 +35,7 @@ const LoginForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={isLoading}
+          style={{ width: "20rem", fontSize: "1.4rem" }}
         />
       </FormRowVertical>
 
@@ -46,6 +47,7 @@ const LoginForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           disabled={isLoading}
+          style={{ width: "20rem", fontSize: "1.4rem" }}
         />
       </FormRowVertical>
       <FormRowVertical>

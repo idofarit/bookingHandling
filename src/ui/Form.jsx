@@ -11,7 +11,7 @@ const Form = styled.form`
       border: 1px solid var(--color-grey-100);
       border-radius: var(--border-radius-md);
       @media (max-width: 850px) {
-        padding: 2rem;
+        padding: 0.8rem;
       }
     `}
 
@@ -28,13 +28,9 @@ const Form = styled.form`
   }
   @media (max-width: 750px) {
     font-size: 1.2rem;
-    width: 60vw;
+    width: 70vw;
     margin: auto;
-  }
-  @media (max-width: 550px) {
-    font-size: 1rem;
-    width: 40vw;
-    margin: auto;
+    padding: 1rem;
   }
 `;
 

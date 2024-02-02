@@ -56,7 +56,7 @@ const Button = styled.button`
   ${(props) => sizes[props.size]}
   ${(props) => variations[props.variation]}
   @media (max-width: 850px) {
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     padding: 1rem;
   }
 `;
