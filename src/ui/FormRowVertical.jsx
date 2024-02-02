@@ -9,9 +9,9 @@ const StyledFormRow = styled.div`
 
 const Label = styled.label`
   font-weight: 500;
-  margin: auto 0;
-  padding: 0 2rem;
-  font-size: 1.5rem;
+  margin: auto;
+  /* padding: 0 5.5rem; */
+  font-size: 1.7rem;
 `;
 
 const Error = styled.span`

@@ -8,8 +8,16 @@ const StyledLogo = styled.div`
     display: none;
     @media (max-width: 600px) {
       display: block;
-      width: 100%;
-      height: 4rem;
+      margin: auto;
+      height: 7rem;
+      width: 7rem;
+    }
+
+    @media (max-width: 480px) {
+      display: block;
+      margin: auto;
+      height: 5rem;
+      width: 5rem;
     }
   }
 `;
@@ -18,8 +26,10 @@ const Img = styled.img`
   height: 9.6rem;
   width: auto;
   @media (max-width: 1050px) {
-    width: 80%;
-    height: 6rem;
+    display: block;
+    margin: auto;
+    height: 10rem;
+    width: 10rem;
   }
   @media (max-width: 600px) {
     display: none;

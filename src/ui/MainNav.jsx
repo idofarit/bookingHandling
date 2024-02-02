@@ -8,7 +8,7 @@ import { HiOutlineCalendarDays, HiOutlineHomeModern } from "react-icons/hi2";
 const NavList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 4.8rem;
   @media (max-width: 1050px) {
     width: 10rem;
   }
@@ -24,11 +24,9 @@ const NavList = styled.ul`
     transform: translateX(-1.2rem);
   }
   @media (max-width: 500px) {
-    /* width: 6rem; */
     transform: translateX(-1.3rem);
   }
   @media (max-width: 450px) {
-    /* width: 6rem; */
     transform: translateX(-1rem);
   }
 `;

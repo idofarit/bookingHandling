@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
 const Form = styled.form`
+  width: 30vw;
+  margin: auto;
   ${(props) =>
     props.type === "regular" &&
     css`

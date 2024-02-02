@@ -46,8 +46,9 @@ const Heading = styled.h1`
       font-weight: 600;
       text-align: center;
       @media (max-width: 550px) {
-        font-size: 1.5rem;
+        font-size: 2rem;
         margin: auto;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
     `}
     
