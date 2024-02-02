@@ -25,15 +25,16 @@ const Form = styled.form`
   font-size: 1.4rem;
   @media (max-width: 850px) {
     font-size: 1.4rem;
-    width: 70vw;
   }
   @media (max-width: 750px) {
     font-size: 1.2rem;
     width: 60vw;
+    margin: auto;
   }
   @media (max-width: 550px) {
     font-size: 1rem;
-    width: auto;
+    width: 40vw;
+    margin: auto;
   }
 `;
 

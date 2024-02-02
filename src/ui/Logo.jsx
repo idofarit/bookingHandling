@@ -1,8 +1,17 @@
 import styled from "styled-components";
 import { useDarkMode } from "../context/DarkModeContext";
+import cs from "/cs.png";
 
 const StyledLogo = styled.div`
   text-align: center;
+  .small-logo {
+    display: none;
+    @media (max-width: 600px) {
+      display: block;
+      width: 100%;
+      height: 4rem;
+    }
+  }
 `;
 
 const Img = styled.img`
@@ -13,8 +22,7 @@ const Img = styled.img`
     height: 6rem;
   }
   @media (max-width: 600px) {
-    width: 100%;
-    height: 4.8rem;
+    display: none;
   }
 `;
 
@@ -25,6 +33,7 @@ const Logo = () => {
   return (
     <StyledLogo>
       <Img src={src} alt="logo" />
+      <Img src={cs} className="small-logo" />
     </StyledLogo>
   );
 };

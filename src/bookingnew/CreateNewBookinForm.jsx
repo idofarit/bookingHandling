@@ -51,7 +51,7 @@ function CreateNewBookinForm({ bookingToEdit = {}, onCloseModal }) {
 
   return (
     <Form
-      style={{ overflowY: "auto", height: "60vh" }}
+      style={{ overflowY: "auto", height: "68vh", width: "100%" }}
       onSubmit={handleSubmit(onSubmit, onError)}
     >
       <FormRow label="Number of Days" error={errors?.numberDays?.message}>

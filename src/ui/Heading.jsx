@@ -9,6 +9,7 @@ const Heading = styled.h1`
       font-weight: 600;
       @media (max-width: 550px) {
         font-size: 1.5rem;
+        margin: auto;
       }
     `}
 
@@ -20,6 +21,7 @@ const Heading = styled.h1`
       font-weight: 600;
       @media (max-width: 550px) {
         font-size: 1.2rem;
+        margin: auto;
       }
     `}
     
@@ -32,6 +34,7 @@ const Heading = styled.h1`
       font-weight: 500;
       @media (max-width: 550px) {
         font-size: 1rem;
+        margin: auto;
       }
     `}
     
@@ -43,7 +46,8 @@ const Heading = styled.h1`
       font-weight: 600;
       text-align: center;
       @media (max-width: 550px) {
-        font-size: 2.3rem;
+        font-size: 1.5rem;
+        margin: auto;
       }
     `}
     

@@ -36,7 +36,7 @@ function CreateNewCustomerForm({ onCloseModal }) {
 
   return (
     <Form
-      style={{ overflowY: "auto", height: "60vh" }}
+      style={{ overflowY: "auto", height: "68vh", width: "100%" }}
       onSubmit={handleSubmit(onSubmit, onError)}
     >
       <FormRow label="ID" error={errors?.id?.message}>
