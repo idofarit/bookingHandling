@@ -102,15 +102,14 @@ const CarSlotRow = ({ car }) => {
             <Modal.Window name="edit">
               <CreateCarSlotForm carSlotEdit={car} />
             </Modal.Window>
-
-            <Modal.Window name="delete">
-              <ConfirmDelete
-                resourceName="cars"
-                disabled={isDeleting}
-                onConfirm={() => deleteCarSlot(carId)}
-              />
-            </Modal.Window>
           </Menus.Menu>
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              resourceName="cars"
+              disabled={isDeleting}
+              onConfirm={() => deleteCarSlot(carId)}
+            />
+          </Modal.Window>
         </Modal>
       </div>
     </Table.Row>
