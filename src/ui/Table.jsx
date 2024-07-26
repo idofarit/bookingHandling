@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
-  font-size: 1.175rem;
+  font-size: 1.5rem;
   background-color: var(--color-grey-0);
   border-radius: 7px;
   overflow: hidden;
@@ -13,7 +13,7 @@ const StyledTable = styled.div`
     overflow: scroll;
   }
   @media (max-width: 450px) {
-    font-size: 0.8rem;
+    font-size: 1rem;
     overflow: scroll;
   }
   @media (max-width: 410px) {
@@ -38,7 +38,7 @@ const StyledHeader = styled(CommonRow)`
   font-weight: 600;
   color: var(--color-grey-600);
   @media (max-width: 850px) {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
   @media (max-width: 410px) {
     width: auto;

@@ -77,17 +77,17 @@ const BookingRow = ({ booking }) => {
 
       <Stacked>
         <span>{customerName}</span>
-        <span style={{ fontSize: "0.8rem" }}>{email}</span>
+        <span style={{ fontSize: "1rem" }}>{email}</span>
       </Stacked>
 
       <Stacked>
-        <span style={{ fontSize: "0.9rem" }}>
+        <span style={{ fontSize: "1.4rem" }}>
           {isToday(new Date(startDate))
             ? "Today"
             : formatDistanceFromNow(startDate)}{" "}
           &rarr; {numberDays} day rent
         </span>
-        <span style={{ fontSize: "0.9rem" }}>
+        <span style={{ fontSize: "1.2rem" }}>
           {format(new Date(startDate), "MMM dd yyyy")} &mdash;{" "}
           {format(new Date(endDate), "MMM dd yyyy")}
         </span>

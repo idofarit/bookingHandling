@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const Form = styled.form`
-  width: 30vw;
+  width: 35vw;
   margin: auto;
   ${(props) =>
     props.type === "regular" &&
@@ -27,6 +27,13 @@ const Form = styled.form`
   font-size: 1.4rem;
   @media (max-width: 850px) {
     font-size: 1.4rem;
+    text-align: center;
+  }
+  @media (max-width: 1150px) {
+    width: 40vw;
+  }
+  @media (max-width: 1050px) {
+    width: 50vw;
   }
   @media (max-width: 750px) {
     font-size: 1.2rem;
