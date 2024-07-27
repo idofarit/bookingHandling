@@ -12,11 +12,9 @@ const StyledTable = styled.div`
     font-size: 1rem;
     overflow: scroll;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 550px) {
     font-size: 1rem;
     overflow: scroll;
-  }
-  @media (max-width: 410px) {
     width: max-content;
   }
 `;

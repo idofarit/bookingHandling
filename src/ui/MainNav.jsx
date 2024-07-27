@@ -21,10 +21,10 @@ const NavList = styled.ul`
   }
   @media (max-width: 600px) {
     width: 6.5rem;
-    transform: translateX(-1.2rem);
+    transform: translateX(-0.2rem);
   }
   @media (max-width: 500px) {
-    transform: translateX(-1.3rem);
+    transform: translateX(-1rem);
   }
   @media (max-width: 450px) {
     transform: translateX(-1rem);

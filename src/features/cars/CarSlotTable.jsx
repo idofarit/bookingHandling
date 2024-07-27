@@ -57,7 +57,7 @@ const CarSlotTable = () => {
   return (
     <Container>
       <Menus>
-        <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+        <Table columns="0.6fr 1.8fr 2.2fr 1fr 0.1fr 0.3fr">
           <Table.Header role="row">
             <div></div>
             <div>Car</div>

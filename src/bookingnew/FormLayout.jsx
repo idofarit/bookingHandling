@@ -5,9 +5,10 @@ import styled from "styled-components";
 import Heading from "../ui/Heading";
 
 const ProgressBar = styled.div`
-  width: 100%;
+  width: 70%;
+  margin: auto;
   height: 10px;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   border-radius: 5px;
   padding: 1.5px;
   background-color: white;
@@ -29,7 +30,11 @@ const Button = styled.button`
   width: 100px;
 `;
 
-const FormContainer = styled.div``;
+const FormContainer = styled.div`
+  @media (min-width: 850px) {
+    padding: 2rem;
+  }
+`;
 
 function FormLayout() {
   const [page, setPage] = useState(0);

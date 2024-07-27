@@ -114,10 +114,7 @@ const CreateCarSlotForm = ({ carSlotEdit = {}, onCloseModal }) => {
         />
       </FormRow>
 
-      <FormRow
-        label="Description for website"
-        error={errors?.description?.message}
-      >
+      <FormRow label="Description for Car" error={errors?.description?.message}>
         <Textarea
           type="number"
           id="description"

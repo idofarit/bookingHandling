@@ -53,6 +53,10 @@ const Heading = styled.h1`
     `}
     
   line-height: 1.4;
+  @media (max-width: 850px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
 `;
 
 export default Heading;
