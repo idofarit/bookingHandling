@@ -5,6 +5,7 @@ import { useCarSlots } from "./useCarSlots";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
+import styled from "styled-components";
 
 const CarSlotTable = () => {
   const { isLoading, cars } = useCarSlots();
@@ -38,24 +39,41 @@ const CarSlotTable = () => {
     (a, b) => (a[field] - b[field]) * modifier
   );
 
-  return (
-    <Menus>
-      <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
-        <Table.Header role="row">
-          <div></div>
-          <div>Car</div>
-          <div>Capacity</div>
-          <div>Price</div>
-          <div>Discount</div>
-          <div></div>
-        </Table.Header>
+  const Container = styled.div`
+    width: 100%;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 5rem;
+    background-color: var(--color-grey-100);
+    padding: 1rem;
+    @media (max-width: 550px) {
+      width: 100%;
+      font-size: 1rem;
+      overflow: scroll;
+    }
+  `;
 
-        <Table.Body
-          data={sortedCabins}
-          render={(car) => <CarSlotRow car={car} key={car.id} />}
-        />
-      </Table>
-    </Menus>
+  return (
+    <Container>
+      <Menus>
+        <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+          <Table.Header role="row">
+            <div></div>
+            <div>Car</div>
+            <div>Capacity</div>
+            <div>Price</div>
+            <div>Discount</div>
+            <div></div>
+          </Table.Header>
+
+          <Table.Body
+            data={sortedCabins}
+            render={(car) => <CarSlotRow car={car} key={car.id} />}
+          />
+        </Table>
+      </Menus>
+    </Container>
   );
 };
 export default CarSlotTable;

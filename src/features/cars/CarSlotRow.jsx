@@ -67,52 +67,54 @@ const CarSlotRow = ({ car }) => {
   };
 
   return (
-    <Table.Row>
-      <Img src={image} />
-      <Car>{name}</Car>
-      <div>Can tarvell upto {maxCapacity}</div>
-      <Price>{formatCurrency(regularPrice)}</Price>
-      {discount ? (
-        <Discount>{formatCurrency(discount)}</Discount>
-      ) : (
-        <span>&mdash;</span>
-      )}
-      <div>
-        <Modal>
-          <Menus.Menu>
-            <Menus.Toggle id={carId} />
+    <div>
+      <Table.Row>
+        <Img src={image} />
+        <Car>{name}</Car>
+        <div>Can tarvell upto {maxCapacity}</div>
+        <Price>{formatCurrency(regularPrice)}</Price>
+        {discount ? (
+          <Discount>{formatCurrency(discount)}</Discount>
+        ) : (
+          <span>&mdash;</span>
+        )}
+        <div>
+          <Modal>
+            <Menus.Menu>
+              <Menus.Toggle id={carId} />
 
-            <Menus.List id={carId}>
-              <Menus.Button
-                icon={<FaRegCopy />}
-                onClick={handleDuplicate}
-                disabled={isCreating}
-              >
-                Duplicate
-              </Menus.Button>
-              <Modal.Open opens="edit">
-                <Menus.Button icon={<FaPencil />}>Edit</Menus.Button>
-              </Modal.Open>
+              <Menus.List id={carId}>
+                <Menus.Button
+                  icon={<FaRegCopy />}
+                  onClick={handleDuplicate}
+                  disabled={isCreating}
+                >
+                  Duplicate
+                </Menus.Button>
+                <Modal.Open opens="edit">
+                  <Menus.Button icon={<FaPencil />}>Edit</Menus.Button>
+                </Modal.Open>
 
-              <Modal.Open opens="delete">
-                <Menus.Button icon={<FaRegTrashCan />}>Delete</Menus.Button>
-              </Modal.Open>
-            </Menus.List>
+                <Modal.Open opens="delete">
+                  <Menus.Button icon={<FaRegTrashCan />}>Delete</Menus.Button>
+                </Modal.Open>
+              </Menus.List>
 
-            <Modal.Window name="edit">
-              <CreateCarSlotForm carSlotEdit={car} />
+              <Modal.Window name="edit">
+                <CreateCarSlotForm carSlotEdit={car} />
+              </Modal.Window>
+            </Menus.Menu>
+            <Modal.Window name="delete">
+              <ConfirmDelete
+                resourceName="cars"
+                disabled={isDeleting}
+                onConfirm={() => deleteCarSlot(carId)}
+              />
             </Modal.Window>
-          </Menus.Menu>
-          <Modal.Window name="delete">
-            <ConfirmDelete
-              resourceName="cars"
-              disabled={isDeleting}
-              onConfirm={() => deleteCarSlot(carId)}
-            />
-          </Modal.Window>
-        </Modal>
-      </div>
-    </Table.Row>
+          </Modal>
+        </div>
+      </Table.Row>
+    </div>
   );
 };
 
